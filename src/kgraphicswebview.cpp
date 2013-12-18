@@ -31,13 +31,13 @@
 #include <QGraphicsSceneWheelEvent>
 #include <QGraphicsSceneMouseEvent>
 
-
 KGraphicsWebView::KGraphicsWebView(QGraphicsItem *parent, bool createCustomPage)
-                 :QGraphicsWebView(parent),
-                  d(new KWebViewPrivate<KGraphicsWebView>(this))
+    : QGraphicsWebView(parent),
+      d(new KWebViewPrivate<KGraphicsWebView>(this))
 {
-    if (createCustomPage)
+    if (createCustomPage) {
         setPage(new KWebPage(this));
+    }
 }
 
 KGraphicsWebView::~KGraphicsWebView()
@@ -63,7 +63,6 @@ void KGraphicsWebView::wheelEvent(QGraphicsSceneWheelEvent *event)
         QGraphicsWebView::wheelEvent(event);
     }
 }
-
 
 void KGraphicsWebView::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {

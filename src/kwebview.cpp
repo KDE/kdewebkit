@@ -30,12 +30,12 @@
 
 #include <QMouseEvent>
 
-
 KWebView::KWebView(QWidget *parent, bool createCustomPage)
-         :QWebView(parent), d(new KWebViewPrivate<KWebView>(this))
+    : QWebView(parent), d(new KWebViewPrivate<KWebView>(this))
 {
-    if (createCustomPage)
+    if (createCustomPage) {
         setPage(new KWebPage(this));
+    }
 }
 
 KWebView::~KWebView()
@@ -61,7 +61,6 @@ void KWebView::wheelEvent(QWheelEvent *event)
         QWebView::wheelEvent(event);
     }
 }
-
 
 void KWebView::mousePressEvent(QMouseEvent *event)
 {

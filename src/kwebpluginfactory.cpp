@@ -45,9 +45,8 @@
 #define QL1S(x)  QLatin1String(x)
 #define QL1C(x)  QLatin1Char(x)
 
-
 KWebPluginFactory::KWebPluginFactory(QObject *parent)
-                  :QWebPluginFactory(parent),d(0)
+    : QWebPluginFactory(parent), d(0)
 {
 }
 
@@ -55,9 +54,9 @@ KWebPluginFactory::~KWebPluginFactory()
 {
 }
 
-QObject* KWebPluginFactory::create(const QString& _mimeType, const QUrl& url, const QStringList& argumentNames, const QStringList& argumentValues) const
+QObject *KWebPluginFactory::create(const QString &_mimeType, const QUrl &url, const QStringList &argumentNames, const QStringList &argumentValues) const
 {
-    QString mimeType (_mimeType.trimmed());
+    QString mimeType(_mimeType.trimmed());
     // If no mimetype is provided, we do our best to correctly determine it here...
     if (mimeType.isEmpty()) {
         // qDebug() << "Looking up missing mimetype for plugin resource:" << url;
@@ -68,7 +67,7 @@ QObject* KWebPluginFactory::create(const QString& _mimeType, const QUrl& url, co
     // Defer handling of flash content to QtWebKit's builtin viewer.
     // If you want to use/test KDE's nspluginviewer, comment out the
     // if statement below.
-    KParts::ReadOnlyPart* part = (excludedMimeType(mimeType) ? 0 : createPartInstanceFrom(mimeType, argumentNames, argumentValues, 0, parent()));
+    KParts::ReadOnlyPart *part = (excludedMimeType(mimeType) ? 0 : createPartInstanceFrom(mimeType, argumentNames, argumentValues, 0, parent()));
 
     // qDebug() << "Asked for" << mimeType << "plugin, got" << part;
 
@@ -86,10 +85,11 @@ QObject* KWebPluginFactory::create(const QString& _mimeType, const QUrl& url, co
         if (page) {
             const QString scheme = page->currentFrame()->url().scheme();
             if (page && (QString::compare(scheme, QL1S("https"), Qt::CaseInsensitive) == 0 ||
-                         QString::compare(scheme, QL1S("webdavs"), Qt::CaseInsensitive) == 0))
-              metaData.insert("ssl_was_in_use", "TRUE");
-            else
-              metaData.insert("ssl_was_in_use", "FALSE");
+                         QString::compare(scheme, QL1S("webdavs"), Qt::CaseInsensitive) == 0)) {
+                metaData.insert("ssl_was_in_use", "TRUE");
+            } else {
+                metaData.insert("ssl_was_in_use", "FALSE");
+            }
         }
 
         KParts::OpenUrlArguments openUrlArgs = part->arguments();
@@ -109,17 +109,17 @@ QList<KWebPluginFactory::Plugin> KWebPluginFactory::plugins() const
     return plugins;
 }
 
-static bool isHttpProtocol(const QUrl& url)
+static bool isHttpProtocol(const QUrl &url)
 {
-    const QString scheme (url.scheme());
+    const QString scheme(url.scheme());
     return (scheme.startsWith(QL1S("http"), Qt::CaseInsensitive)
-         || scheme.startsWith(QL1S("webdav"), Qt::CaseInsensitive));
+            || scheme.startsWith(QL1S("webdav"), Qt::CaseInsensitive));
 }
 
-void KWebPluginFactory::extractGuessedMimeType (const QUrl& url, QString* mimeType) const
+void KWebPluginFactory::extractGuessedMimeType(const QUrl &url, QString *mimeType) const
 {
     if (mimeType) {
-        const QUrl reqUrl ((isHttpProtocol(url) ? QUrl(url.path()) : url));
+        const QUrl reqUrl((isHttpProtocol(url) ? QUrl(url.path()) : url));
         QMimeDatabase db;
         QMimeType mime = db.mimeTypeForFile(reqUrl.path(), QMimeDatabase::MatchExtension);
         if (!mime.isDefault() && !mime.name().startsWith(QL1S("inode/"))) {
@@ -128,13 +128,13 @@ void KWebPluginFactory::extractGuessedMimeType (const QUrl& url, QString* mimeTy
     }
 }
 
-KParts::ReadOnlyPart* KWebPluginFactory::createPartInstanceFrom(const QString& mimeType,
-                                                                const QStringList& argumentNames,
-                                                                const QStringList& argumentValues,
-                                                                QWidget* parentWidget,
-                                                                QObject* parentObj) const
+KParts::ReadOnlyPart *KWebPluginFactory::createPartInstanceFrom(const QString &mimeType,
+        const QStringList &argumentNames,
+        const QStringList &argumentValues,
+        QWidget *parentWidget,
+        QObject *parentObj) const
 {
-    KParts::ReadOnlyPart* part = 0;
+    KParts::ReadOnlyPart *part = 0;
 
     if (!mimeType.isEmpty()) {
         // Only attempt to find a KPart for the supported mime types...
@@ -150,17 +150,20 @@ KParts::ReadOnlyPart* KWebPluginFactory::createPartInstanceFrom(const QString& m
     return part;
 }
 
-bool KWebPluginFactory::excludedMimeType (const QString& mimeType) const
+bool KWebPluginFactory::excludedMimeType(const QString &mimeType) const
 {
-    if (mimeType.startsWith(QL1S("inode/"), Qt::CaseInsensitive))
+    if (mimeType.startsWith(QL1S("inode/"), Qt::CaseInsensitive)) {
         return true;
+    }
 
-    if (mimeType.startsWith(QL1S("application/x-java"), Qt::CaseInsensitive))
+    if (mimeType.startsWith(QL1S("application/x-java"), Qt::CaseInsensitive)) {
         return true;
+    }
 
     if (mimeType == QL1S("application/x-shockwave-flash") ||
-        mimeType == QL1S("application/futuresplash"))
-      return true;
+            mimeType == QL1S("application/futuresplash")) {
+        return true;
+    }
 
     return false;
 }

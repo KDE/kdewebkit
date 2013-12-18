@@ -27,8 +27,9 @@
 
 #include <QtWebKit/QWebPluginFactory>
 
-namespace KParts {
-    class ReadOnlyPart;
+namespace KParts
+{
+class ReadOnlyPart;
 }
 
 /**
@@ -93,7 +94,7 @@ protected:
      *
      * @since 4.8.3
      */
-    void extractGuessedMimeType(const QUrl& url, QString* mimeType) const;
+    void extractGuessedMimeType(const QUrl &url, QString *mimeType) const;
 
     /**
      * Returns true if the given mime-type is excluded from being used to create
@@ -105,7 +106,7 @@ protected:
      *
      * @since 4.8.3
      */
-    bool excludedMimeType(const QString& mimeType) const;
+    bool excludedMimeType(const QString &mimeType) const;
 
     /**
      * Returns an instance of the service associated with @p mimeType.
@@ -125,14 +126,14 @@ protected:
      * @see QWebPluginFactory::create
      * @since 4.8.3
      */
-    KParts::ReadOnlyPart* createPartInstanceFrom(const QString& mimeType,
-                                                 const QStringList &argumentNames,
-                                                 const QStringList &argumentValues,
-                                                 QWidget* parentWidget = 0,
-                                                 QObject* parent = 0) const;
+    KParts::ReadOnlyPart *createPartInstanceFrom(const QString &mimeType,
+            const QStringList &argumentNames,
+            const QStringList &argumentValues,
+            QWidget *parentWidget = 0,
+            QObject *parent = 0) const;
 private:
     class KWebPluginFactoryPrivate;
-    KWebPluginFactoryPrivate* const d;
+    KWebPluginFactoryPrivate *const d;
 };
 
 #endif // KWEBPLUGINFACTORY_H

@@ -44,15 +44,15 @@ class KWebViewPrivate
 {
 public:
     KWebViewPrivate(T *parent)
-    : q(parent),
-      keyboardModifiers(Qt::NoModifier) ,
-      pressedButtons(Qt::NoButton)
+        : q(parent),
+          keyboardModifiers(Qt::NoModifier),
+          pressedButtons(Qt::NoButton)
     {
     }
 
     bool isExternalContentAllowed()
     {
-        KWebPage *webPage = qobject_cast<KWebPage*>(q->page());
+        KWebPage *webPage = qobject_cast<KWebPage *>(q->page());
         if (webPage) {
             return webPage->isExternalContentAllowed();
         }
@@ -62,7 +62,7 @@ public:
 
     void setAllowExternalContent(bool allow)
     {
-        KWebPage *webPage = qobject_cast<KWebPage*>(q->page());
+        KWebPage *webPage = qobject_cast<KWebPage *>(q->page());
         if (webPage) {
             webPage->setAllowExternalContent(allow);
         }
@@ -87,7 +87,7 @@ public:
 
         if (!url.isEmpty()) {
             if ((pressedButtons & Qt::MidButton) ||
-                ((pressedButtons & Qt::LeftButton) && (keyboardModifiers & Qt::ControlModifier))) {
+                    ((pressedButtons & Qt::LeftButton) && (keyboardModifiers & Qt::ControlModifier))) {
                 emit q->linkMiddleOrCtrlClicked(url);
                 return true;
             }
@@ -101,7 +101,7 @@ public:
         return false;
     }
 
-    bool handleUrlPasteFromClipboard(QEvent* event)
+    bool handleUrlPasteFromClipboard(QEvent *event)
     {
         QWebPage *page = q->page();
         if ((pressedButtons & Qt::MidButton) && page) {
@@ -110,14 +110,15 @@ public:
             // on scroll bars does not cause navigation to a url that might have been
             // copied into the selection clipboard.
             page->event(event);
-            if (event->isAccepted())
+            if (event->isAccepted()) {
                 return true;
+            }
 
             if (!hitTest.linkUrl().isValid() && !hitTest.isContentEditable() && !page->isModified()) {
-                QString subType (QL1S("plain"));
+                QString subType(QL1S("plain"));
                 const QString clipboardText = QApplication::clipboard()->text(subType, QClipboard::Selection);
                 if (!clipboardText.isEmpty()) {
-                    KUriFilterData data (clipboardText.left(250).trimmed());
+                    KUriFilterData data(clipboardText.left(250).trimmed());
                     data.setCheckForExecutables(false); // don't allow executables...
                     if (KUriFilter::self()->filterUri(data, QStringList(QL1S("kshorturifilter")))) {
                         switch (data.uriType()) {

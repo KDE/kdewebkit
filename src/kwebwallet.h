@@ -35,7 +35,6 @@
 class QWebFrame;
 class QWebPage;
 
-
 /**
  * @short A class that provides KDE wallet integration for QWebFrame.
  *
@@ -69,12 +68,11 @@ public:
     /**
      * Holds data from a HTML &lt;form&gt; element.
      */
-    struct WebForm
-    {
-       /**
-        * A typedef for storing the name and value attributes of HTML &lt;input&gt;
-        * elements.
-        */
+    struct WebForm {
+        /**
+         * A typedef for storing the name and value attributes of HTML &lt;input&gt;
+         * elements.
+         */
         typedef QPair<QString, QString> WebField;
 
         /** The URL the form was found at. */
@@ -104,7 +102,7 @@ public:
      * @param wid     the window ID of the window the web page will be
      *                embedded in
      */
-    explicit KWebWallet(QObject* parent = 0, WId wid = 0);
+    explicit KWebWallet(QObject *parent = 0, WId wid = 0);
 
     /**
      * Destructor
@@ -127,7 +125,7 @@ public:
      * in @p frame and not their cached data, i.e. the fields member variable in
      * the returned @ref WebForm list will always be empty.
      */
-    WebFormList formsWithCachedData(QWebFrame* frame, bool recursive = true) const;
+    WebFormList formsWithCachedData(QWebFrame *frame, bool recursive = true) const;
 
     /**
      * Attempts to save the form data from @p frame and its children frames.
@@ -164,7 +162,7 @@ public:
      * @see formsWithCachedData
      * @see removeFormData
      */
-    void removeFormData (QWebFrame *frame, bool recursive);
+    void removeFormData(QWebFrame *frame, bool recursive);
 
     /**
      * Removes the form data specified by @p forms from the persistent storage.
@@ -313,7 +311,7 @@ protected:
 private:
     class KWebWalletPrivate;
     friend class KWebWalletPrivate;
-    KWebWalletPrivate * const d;
+    KWebWalletPrivate *const d;
 
     Q_PRIVATE_SLOT(d, void _k_openWalletDone(bool))
     Q_PRIVATE_SLOT(d, void _k_walletClosed())

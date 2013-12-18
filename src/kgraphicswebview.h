@@ -143,7 +143,7 @@ Q_SIGNALS:
      * @see QClipboard
      * @since 4.6
      */
-    void selectionClipboardUrlPasted(const QUrl &url, const QString& searchText);
+    void selectionClipboardUrlPasted(const QUrl &url, const QString &searchText);
 
     /**
      * Emitted when a link is clicked with the left mouse button while SHIFT is
@@ -200,7 +200,7 @@ protected:
 
 private:
     friend class KWebViewPrivate<KGraphicsWebView>;
-    KWebViewPrivate<KGraphicsWebView> * const d;
+    KWebViewPrivate<KGraphicsWebView> *const d;
 };
 
 #endif // KWEBVIEW_H

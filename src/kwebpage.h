@@ -32,9 +32,10 @@
 class KWebWallet;
 class KJob;
 
-namespace KIO {
-    class MetaData;
-    class Job;
+namespace KIO
+{
+class MetaData;
+class Job;
 }
 
 /**
@@ -74,14 +75,13 @@ namespace KIO {
 class KDEWEBKIT_EXPORT KWebPage : public QWebPage
 {
     Q_OBJECT
-    Q_FLAGS (Integration)
+    Q_FLAGS(Integration)
 
 public:
     /**
      * Flags for setting the desired level of integration.
      */
-    enum IntegrationFlags
-    {
+    enum IntegrationFlags {
         /**
          * Provide only very basic integration such as using KDE icons for the
          * actions provided by QWebPage.
@@ -180,7 +180,7 @@ public:
      * @param wallet  the KWebWallet to be used for storing form data, or
      *                0 to disable KWallet integration
      */
-    void setWallet(KWebWallet* wallet);
+    void setWallet(KWebWallet *wallet);
 
 public Q_SLOTS:
     /**
@@ -319,7 +319,7 @@ protected:
      * @see KProtocolManager::userAgentForHost.
      * @see QWebPage::userAgentForUrl.
      */
-    virtual QString userAgentForUrl(const QUrl& url) const;
+    virtual QString userAgentForUrl(const QUrl &url) const;
 
     /**
      * @reimp
@@ -334,7 +334,7 @@ protected:
      *
      * @see QWebPage::acceptNavigationRequest
      */
-    virtual bool acceptNavigationRequest(QWebFrame * frame, const QNetworkRequest & request, NavigationType type);
+    virtual bool acceptNavigationRequest(QWebFrame *frame, const QNetworkRequest &request, NavigationType type);
 
     /**
      * Attempts to handle @p reply and returns true on success, false otherwise.
@@ -352,14 +352,14 @@ protected:
      * @param metaData     if not null, it will be set to the KIO meta-data specified in @p reply, if any.
      * @since 4.6.3
      */
-    bool handleReply (QNetworkReply* reply, QString* contentType = 0, KIO::MetaData* metaData = 0);
+    bool handleReply(QNetworkReply *reply, QString *contentType = 0, KIO::MetaData *metaData = 0);
 
 private:
     class KWebPagePrivate;
-    KWebPagePrivate* const d;
-    Q_PRIVATE_SLOT(d, void _k_copyResultToTempFile(KJob*))
-    Q_PRIVATE_SLOT(d, void _k_receivedContentType(KIO::Job*, const QString&))
-    Q_PRIVATE_SLOT(d, void _k_contentTypeCheckFailed(KJob*))
+    KWebPagePrivate *const d;
+    Q_PRIVATE_SLOT(d, void _k_copyResultToTempFile(KJob *))
+    Q_PRIVATE_SLOT(d, void _k_receivedContentType(KIO::Job *, const QString &))
+    Q_PRIVATE_SLOT(d, void _k_contentTypeCheckFailed(KJob *))
 };
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(KWebPage::Integration)
