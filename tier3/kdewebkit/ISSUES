@@ -1,0 +1,51 @@
+Known Issues [PENDING]:
+=======================
+* [QtWebKit] Form completion like the one available in native Qt widgets such
+  as QLineEdit is missing due to lack of access to form elements.
+  See http://webkit.org/b/36668.
+
+Known Issues [PARTIALLY FIXED]:
+===============================
+* [QtWebKit] Spell checking support. See https://webkit.org/b/44114 [ QtWebKit > 2.2 ]
+  Some support was implemented but did not quite make it into QtWebKit 2.2.
+  It will probably be in future releases. However, what is implemented in QtWebKit is
+  the continuous spell check or spell-check-as-you-type functionality. The ability to
+  passively spell check (by selecting option from a context menu) is something that
+  can be implemented in the specific browser implementation. kwebkitpart already
+  provides such support.
+
+Known Issues [FIXED]:
+=====================
+* [kdewebkit] Proper support for putting ioslaves on hold. [KDE 4.6]
+  Handling unsupported content always requires more than one connection to the
+  same server to download a single request. The upstream change requested,
+  http://webkit.org/b/37880, turned out to be the wrong solution. The issue has
+  now been correctly addressed within KDE itself. You can find the details of
+  the fix at http://reviewboard.kde.org/r/6182/ & http://reviewboard.kde.org/r/6183/
+
+* [QtWebKit] Missing Java applet support. [QtWebKit 2.1*]
+  See http://webkit.org/b/33044.
+
+* [QtWebKit] Crash while browsing facebook. [QtWebKit 2.0**]
+  See http://webkit.org/b/35204.
+
+* [QtWebKit] Does not have support "Content-Disposition". [QtWebKit 2.0**]
+  Specifically when it contains the keyword "attachment" the content returned
+  is not supposed to be rendered. Test case site: http://greenbytes.de/tech/tc2231/
+  See http://webkit.org/b/36395.
+
+* [QtWebKit] No way to stop <meta> tag based page refresh. [QtWebKit 2.0**]
+  See http://webkit.org/b/29899
+
+* [QtWebKit] HTML 5 <video> tag will not properly work for most users depending 
+  on how their distro created their Qt library package. [QtWebKit >= 2.2]
+
+  With QtWebKit 2.2, HTML 5 <video> support is internally handled by QtWebKit using
+  WebKit's gstreamer integration. For the details on how and why that was done see
+  https://lists.webkit.org/pipermail/webkit-qt/2011-June/001633.html.
+
+
+NOTES:
+======
+** Qt 4.7.x comes with QtWebkit 2.0.x
+** Qt 4.8.x comes with QtWebKit 2.2.x
