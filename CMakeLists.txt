@@ -17,7 +17,7 @@ include(FeatureSummary)
 include(ECMSetupVersion)
 
 set(KF5_VERSION "5.0.0")
-ecm_setup_version(${KF5_VERSION} VARIABLE_PREFIX KDEWebKit
+ecm_setup_version(${KF5_VERSION} VARIABLE_PREFIX KDEWEBKIT
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kdewebkit_version.h"
                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5WebKitConfigVersion.cmake")
 
