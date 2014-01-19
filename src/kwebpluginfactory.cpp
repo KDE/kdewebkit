@@ -31,7 +31,8 @@
 #include <QDebug>
 
 #include <kio/job.h>
-#include <kparts/part.h>
+#include <kparts/readonlypart.h>
+#include <kparts/openurlarguments.h>
 
 #include <QtCore/QListIterator>
 #include <QtCore/QStringList>
