@@ -7,7 +7,7 @@ find_package(ECM 0.0.10 REQUIRED NO_MODULE)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
 set(REQUIRED_QT_VERSION "5.2")
-find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Core Widgets WebKitWidgets Xml Network Test)
+find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Core Widgets WebKitWidgets Network)
 include(KDEInstallDirs)
 include(KDEFrameworkCompilerSettings)
 include(KDECMakeSettings)
@@ -23,31 +23,13 @@ ecm_setup_version(${KF5_VERSION} VARIABLE_PREFIX KDEWEBKIT
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kdewebkit_version.h"
                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5WebKitConfigVersion.cmake")
 
-if("${CMAKE_BINARY_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
-  #dependencies of dependencies, remove when depending on cmake 3.0.0
-  find_package(KF5I18n ${KF5_VERSION} REQUIRED)
-  find_package(KF5DBusAddons ${KF5_VERSION} REQUIRED)
-  find_package(KF5WidgetsAddons ${KF5_VERSION} REQUIRED)
-  find_package(KF5CoreAddons ${KF5_VERSION} REQUIRED)
-  find_package(KF5GuiAddons ${KF5_VERSION} REQUIRED)
-  find_package(KF5Service ${KF5_VERSION} REQUIRED)
-  find_package(KF5WindowSystem ${KF5_VERSION} REQUIRED)
-  find_package(KF5ItemViews ${KF5_VERSION} REQUIRED)
-  find_package(KF5ConfigWidgets ${KF5_VERSION} REQUIRED)
-  find_package(KF5IconThemes ${KF5_VERSION} REQUIRED)
-  find_package(KF5Solid ${KF5_VERSION} REQUIRED)
-  find_package(KF5Completion ${KF5_VERSION} REQUIRED)
-  find_package(KF5TextWidgets ${KF5_VERSION} REQUIRED)
-  find_package(KF5XmlGui ${KF5_VERSION} REQUIRED)
-  find_package(KF5Bookmarks ${KF5_VERSION} REQUIRED)
-
-  #actual dependencies
-  find_package(KF5CoreAddons ${KF5_VERSION} REQUIRED)
-  find_package(KF5Wallet ${KF5_VERSION} REQUIRED)
-  find_package(KF5KIO ${KF5_VERSION} REQUIRED)
-  find_package(KF5Notifications ${KF5_VERSION} REQUIRED)
-  find_package(KF5Parts ${KF5_VERSION} REQUIRED)
-endif()
+find_package(KF5Config ${KF5_VERSION} REQUIRED)
+find_package(KF5CoreAddons ${KF5_VERSION} REQUIRED)
+find_package(KF5KIO ${KF5_VERSION} REQUIRED)
+find_package(KF5JobWidgets ${KF5_VERSION} REQUIRED)
+find_package(KF5Parts ${KF5_VERSION} REQUIRED)
+find_package(KF5Service ${KF5_VERSION} REQUIRED)
+find_package(KF5Wallet ${KF5_VERSION} REQUIRED)
 
 remove_definitions(-DQT_NO_CAST_TO_ASCII)
 remove_definitions(-DQT_NO_CAST_FROM_ASCII)
@@ -80,6 +62,4 @@ install(FILES
   DESTINATION ${INCLUDE_INSTALL_DIR} COMPONENT Devel
 )
 
-if ("${CMAKE_BINARY_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
-  feature_summary(WHAT ALL   FATAL_ON_MISSING_REQUIRED_PACKAGES)
-endif()
+feature_summary(WHAT ALL   FATAL_ON_MISSING_REQUIRED_PACKAGES)
