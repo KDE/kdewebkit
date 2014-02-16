@@ -20,17 +20,16 @@ set_target_properties(KF5WebKit PROPERTIES VERSION   ${KDEWEBKIT_VERSION_STRING}
                                            EXPORT_NAME WebKit
 )
 
-ecm_generate_headers(
+ecm_generate_headers(KDEWebKit_HEADERS
+  HEADER_NAMES
   KWebWallet
   KGraphicsWebView
   KWebPluginFactory
   KWebPage
   KWebView
 
-  MODULE_NAME KDEWebKit
   REQUIRED_HEADERS KDEWebKit_HEADERS
 )
-install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/KDEWebKit DESTINATION ${INCLUDE_INSTALL_DIR} COMPONENT Devel)
 
 install(TARGETS KF5WebKit EXPORT KF5WebKitTargets ${INSTALL_TARGETS_DEFAULT_ARGS})
 install(FILES
