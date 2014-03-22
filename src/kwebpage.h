@@ -39,13 +39,13 @@ class Job;
 }
 
 /**
- * @short An enhanced QWebPage that provides integration into the KDE environment.
+ * @short An enhanced QWebPage that provides integration with KDE Frameworks.
  *
  * This is a convenience class that provides full integration with KDE
- * technologies such as KIO for network request handling, KCookiejar for cookie
- * handling, KParts for embedding non-html content and KWallet for storing
- * form data.  It also sets standard icons for many of the actions provided by
- * QWebPage.
+ * frameworks technologies such as KIO for network request handling, KCookiejar
+ * for cookie handling, KParts for embedding non-html content and KWallet for
+ * storing form data.  It also sets standard icons for many of the actions
+ * provided by QWebPage.
  *
  * Most of this integration happens behind the scenes.  If you want KWallet
  * integration, however, you will have to provide a mechanism for deciding
@@ -145,11 +145,11 @@ public:
     /**
      * The wallet integration manager.
      *
-     * If you wish to use KDE wallet integration, you will have to connect to
+     * If you wish to use KWallet integration, you will have to connect to
      * signals emitted by this object and react accordingly.  See KWebWallet
      * for more information.
      *
-     * @return the wallet integration manager, or 0 if KDE wallet integration
+     * @return the wallet integration manager, or 0 if KWallet integration
      *         is disabled
      */
     KWebWallet *wallet() const;
@@ -205,9 +205,9 @@ public Q_SLOTS:
      * This slot first prompts the user where to save the requested resource
      * and then downloads it using KIO.
      *
-     * In KDE 4.8 and higher, if @p reply contains a QObject property called
-     * "DownloadManagerExe", then an attempt will be made to the command
-     * specified by that property to download the specified resource.
+     * If @p reply contains a QObject property called "DownloadManagerExe", then
+     * an attempt will be made to the command specified by that property to
+     * download the specified resource.
      *
      * If the "DownloadManagerExe" property is not defined or the command
      * specified by it could not be successfully executed, then the user will
@@ -309,8 +309,8 @@ protected:
     /**
      * @reimp
      *
-     * This function is re-implemented to provide KDE user-agent management
-     * integration through KProtocolManager.
+     * This function is re-implemented to provide KIO user-agent management
+     * integration with KProtocolManager.
      *
      * If a special user-agent has been configured for the host indicated by
      * @p url, that user-agent will be returned.  Otherwise, QWebPage's
@@ -339,9 +339,9 @@ protected:
     /**
      * Attempts to handle @p reply and returns true on success, false otherwise.
      *
-     * In KDE 4.8 and higher, if @p reply contains a QObject property called
-     * "DownloadManagerExe", then an attempt will be made to let the command
-     * specified by that property to download the requested resource.
+     * If @p reply contains a QObject property called "DownloadManagerExe", then
+     * an attempt will be made to let the command specified by that property to
+     * download the requested resource.
      *
      * If the "DownloadManagerExe" property is not defined or the command
      * specified by it could not be successfully executed, then the user will

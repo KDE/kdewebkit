@@ -34,9 +34,10 @@ class QUrl;
 template<class T> class KWebViewPrivate;
 
 /**
- * @short A re-implementation of QWebView that provides KDE integration.
+ * @short A re-implementation of QWebView that provides integration with KDE
+ * frameworks.
  *
- * This is a drop-in replacement for QWebView that provides full KDE
+ * This is a drop-in replacement for QWebView that provides full KDE frameworks
  * integration through @ref KWebPage as well as additional signals that
  * capture middle, shift and ctrl mouse clicks on links and URL pasting
  * from the selection clipboard.
@@ -62,9 +63,9 @@ public:
      * Constructs a KWebView object with parent @p parent.
      *
      * Set @p createCustomPage to false to prevent the creation of a
-     * @ref KWebPage object for KDE integration. Doing so allows you to
-     * avoid unnecessary object creation and deletion if you are going to
-     * use a subclass of KWebPage.
+     * @ref KWebPage object for KDE frameworks integration. Doing so allows you
+     * to avoid unnecessary object creation and deletion if you are going to use
+     * a subclass of KWebPage.
      *
      * @param parent            the parent object
      * @param createCustomPage  if @c true, the view's page is set to an
@@ -150,8 +151,8 @@ Q_SIGNALS:
      * Emitted when a link is clicked with the left mouse button while SHIFT is
      * held down.
      *
-     * A KDE user would typically expect this to result in the triggering of a
-     * "save link as" action.
+     * A user of Plasma desktop would typically expect this to result in the
+     * triggering of a "save link as" action.
      *
      * @param url  the URL of the clicked link
      */

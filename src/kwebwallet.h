@@ -36,7 +36,7 @@ class QWebFrame;
 class QWebPage;
 
 /**
- * @short A class that provides KDE wallet integration for QWebFrame.
+ * @short A class that provides KWallet integration for QWebFrame.
  *
  * Normally, you will use this class via KWebPage.  In this case, you need to
  * connect to the saveFormDataRequested signal and call either
@@ -95,7 +95,7 @@ public:
      *
      * @p parent is usually the QWebPage this wallet is being used for.
      *
-     * The @p wid parameter is used to tell KDE's wallet manager which window
+     * The @p wid parameter is used to tell the KWallet manager which window
      * is requesting access to the wallet.
      *
      * @param parent  the owner of this wallet

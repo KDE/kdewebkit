@@ -33,7 +33,7 @@ class ReadOnlyPart;
 }
 
 /**
- * @short A QWebPluginFactory with integration into the KDE environment.
+ * @short A QWebPluginFactory that is integrated with KDE frameworks.
  *
  * This class will attempt to find a KPart to satisfy a plugin request.
  *
@@ -98,7 +98,7 @@ protected:
 
     /**
      * Returns true if the given mime-type is excluded from being used to create
-     * a web plugin using KDE's trader.
+     * a web plugin using KService's trader.
      *
      * Currently this function only returns true for mimetypes 'x-java',
      * 'x-shockwave-flash', and 'futuresplash' in the 'application' category
@@ -111,7 +111,7 @@ protected:
     /**
      * Returns an instance of the service associated with @p mimeType.
      *
-     * This function uses KDE's trader to create an instance of the service
+     * This function uses KService's trader to create an instance of the service
      * associated with the given parameters. The parameters are the <param>
      * tags of the HTML object. The name and the value attributes of these
      * tags are specified by the @p argumentNames and @p argumentValues
