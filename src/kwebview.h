@@ -119,7 +119,7 @@ Q_SIGNALS:
      * @deprecated  use selectionClipboardUrlPasted(QUrl, bool) instead
      * @see QClipboard
      */
-#ifndef KDE_NO_DEPRECATED
+#ifndef KDEWEBKIT_NO_DEPRECATED
     KDEWEBKIT_DEPRECATED void selectionClipboardUrlPasted(const QUrl &url);
 #endif
 
