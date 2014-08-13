@@ -12,9 +12,3 @@ In particular, you should use KWebView in place of QWebView, KGraphicsWebView
 in place of QGraphicsWebView and KWebPage in place of QWebPage.  See the
 documentation for those classes for more information.
 
-## Links
-
-- Home page: <https://projects.kde.org/projects/frameworks/kdewebkit>
-- Mailing list: <https://mail.kde.org/mailman/listinfo/kde-frameworks-devel>
-- IRC channel: #kde-devel on Freenode
-- Git repository: <https://projects.kde.org/projects/frameworks/kdewebkit/repository>
