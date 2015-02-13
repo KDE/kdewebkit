@@ -178,7 +178,7 @@ protected:
      * @see QWidget::wheelEvent
      * @internal
      */
-    void wheelEvent(QWheelEvent *event);
+    void wheelEvent(QWheelEvent *event) Q_DECL_OVERRIDE;
 
     /**
      * @reimp
@@ -188,7 +188,7 @@ protected:
      * @see QWidget::mousePressEvent
      * @internal
      */
-    virtual void mousePressEvent(QMouseEvent *event);
+    void mousePressEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
 
     /**
      * @reimp
@@ -198,7 +198,7 @@ protected:
      * @see QWidget::mouseReleaseEvent
      * @internal
      */
-    virtual void mouseReleaseEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event) Q_DECL_OVERRIDE;
 
 private:
     friend class KWebViewPrivate<KWebView>;

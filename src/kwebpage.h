@@ -319,7 +319,7 @@ protected:
      * @see KProtocolManager::userAgentForHost.
      * @see QWebPage::userAgentForUrl.
      */
-    virtual QString userAgentForUrl(const QUrl &url) const;
+    QString userAgentForUrl(const QUrl &url) const Q_DECL_OVERRIDE;
 
     /**
      * @reimp
@@ -334,7 +334,7 @@ protected:
      *
      * @see QWebPage::acceptNavigationRequest
      */
-    virtual bool acceptNavigationRequest(QWebFrame *frame, const QNetworkRequest &request, NavigationType type);
+    bool acceptNavigationRequest(QWebFrame *frame, const QNetworkRequest &request, NavigationType type) Q_DECL_OVERRIDE;
 
     /**
      * Attempts to handle @p reply and returns true on success, false otherwise.
