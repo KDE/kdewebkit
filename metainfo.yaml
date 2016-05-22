@@ -11,3 +11,7 @@ libraries:
  - qmake: KDEWebKit
    cmake: "KF5::WebKit"
 cmakename: KF5WebKit
+
+public_lib: true
+group: Frameworks
+subgroup: Tier 3
