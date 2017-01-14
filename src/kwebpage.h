@@ -75,7 +75,6 @@ class Job;
 class KDEWEBKIT_EXPORT KWebPage : public QWebPage
 {
     Q_OBJECT
-    Q_FLAGS(Integration)
 
 public:
     /**
@@ -107,6 +106,7 @@ public:
         KWalletIntegration = 0x08
     };
     Q_DECLARE_FLAGS(Integration, IntegrationFlags)
+    Q_FLAG(Integration)
 
     /**
      * Constructs a KWebPage with parent @p parent.
