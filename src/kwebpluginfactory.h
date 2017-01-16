@@ -129,8 +129,8 @@ protected:
     KParts::ReadOnlyPart *createPartInstanceFrom(const QString &mimeType,
             const QStringList &argumentNames,
             const QStringList &argumentValues,
-            QWidget *parentWidget = 0,
-            QObject *parent = 0) const;
+            QWidget *parentWidget = nullptr,
+            QObject *parent = nullptr) const;
 private:
     class KWebPluginFactoryPrivate;
     KWebPluginFactoryPrivate *const d;

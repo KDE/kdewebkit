@@ -118,7 +118,7 @@ static void extractMimeType(const QNetworkReply *reply, QString &mimeType)
 }
 
 static bool downloadResource(const QUrl &srcUrl, const QString &suggestedName = QString(),
-                             QWidget *parent = 0, const KIO::MetaData &metaData = KIO::MetaData())
+                             QWidget *parent = nullptr, const KIO::MetaData &metaData = KIO::MetaData())
 {
     const QString fileName = suggestedName.isEmpty() ? srcUrl.fileName() : suggestedName;
     // convert filename to URL using fromPath to avoid trouble with ':' in filenames (#184202)
@@ -136,7 +136,7 @@ static bool downloadResource(const QUrl &srcUrl, const QString &suggestedName = 
 
     job->addMetaData(QL1S("MaxCacheSize"), QL1S("0")); // Don't store in http cache.
     job->addMetaData(QL1S("cache"), QL1S("cache")); // Use entry from cache if available.
-    KJobWidgets::setWindow(job, parent ? parent->window() : 0);
+    KJobWidgets::setWindow(job, parent ? parent->window() : nullptr);
     job->ui()->setAutoErrorHandlingEnabled(true);
     return true;
 }
@@ -237,13 +237,13 @@ KWebPage::KWebPage(QObject *parent, Integration flags)
     }
 
     QWidget *parentWidget = qobject_cast<QWidget *>(parent);
-    d->window = (parentWidget ? parentWidget->window() : 0);
+    d->window = (parentWidget ? parentWidget->window() : nullptr);
 
     // KDE IO (KIO) integration...
     if (!flags || (flags & KIOIntegration)) {
         KIO::Integration::AccessManager *manager = new KIO::Integration::AccessManager(this);
         // Disable QtWebKit's internal cache to avoid duplication with the one in KIO...
-        manager->setCache(0);
+        manager->setCache(nullptr);
         manager->setWindow(d->window);
         manager->setEmitReadyReadOnMetaDataChange(true);
         setNetworkAccessManager(manager);
@@ -251,7 +251,7 @@ KWebPage::KWebPage(QObject *parent, Integration flags)
 
     // KWallet integration...
     if (!flags || (flags & KWalletIntegration)) {
-        setWallet(new KWebWallet(0, (d->window ? d->window->winId() : 0)));
+        setWallet(new KWebWallet(nullptr, (d->window ? d->window->winId() : 0)));
     }
 
     setActionIcon(action(Back), QIcon::fromTheme("go-previous"));
@@ -455,7 +455,7 @@ QString KWebPage::userAgentForUrl(const QUrl &_url) const
 static void setDisableCookieJarStorage(QNetworkAccessManager *manager, bool status)
 {
     if (manager) {
-        KIO::Integration::CookieJar *cookieJar = manager ? qobject_cast<KIO::Integration::CookieJar *>(manager->cookieJar()) : 0;
+        KIO::Integration::CookieJar *cookieJar = manager ? qobject_cast<KIO::Integration::CookieJar *>(manager->cookieJar()) : nullptr;
         if (cookieJar) {
             //qDebug() << "Store cookies ?" << !status;
             cookieJar->setDisableCookieStorage(status);

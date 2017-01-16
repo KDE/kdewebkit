@@ -122,7 +122,7 @@ static QWidget *topLevelWindow(QObject *obj)
     while (widget && widget->parentWidget()) {
         widget = widget->parentWidget();
     }
-    return (widget ? widget->window() : 0);
+    return (widget ? widget->window() : nullptr);
 }
 
 class KWebWallet::KWebWalletPrivate

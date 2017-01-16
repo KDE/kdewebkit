@@ -120,7 +120,7 @@ public:
      * @see KIO::Integration::AccessManager
      * @see wallet() and setWallet()
      */
-    explicit KWebPage(QObject *parent = 0, Integration flags = Integration());
+    explicit KWebPage(QObject *parent = nullptr, Integration flags = Integration());
 
     /**
      * Destroys the KWebPage.
@@ -352,7 +352,7 @@ protected:
      * @param metaData     if not null, it will be set to the KIO meta-data specified in @p reply, if any.
      * @since 4.6.3
      */
-    bool handleReply(QNetworkReply *reply, QString *contentType = 0, KIO::MetaData *metaData = 0);
+    bool handleReply(QNetworkReply *reply, QString *contentType = nullptr, KIO::MetaData *metaData = nullptr);
 
 private:
     class KWebPagePrivate;

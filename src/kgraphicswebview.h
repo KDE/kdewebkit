@@ -70,7 +70,7 @@ public:
      * @param createCustomPage  if @c true, the view's page is set to an
      *                          instance of KWebPage
      */
-    explicit KGraphicsWebView(QGraphicsItem *parent = 0, bool createCustomPage = true);
+    explicit KGraphicsWebView(QGraphicsItem *parent = nullptr, bool createCustomPage = true);
 
     /**
      * Destroys the KGraphicsWebView.

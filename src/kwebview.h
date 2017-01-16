@@ -71,7 +71,7 @@ public:
      * @param createCustomPage  if @c true, the view's page is set to an
      *                          instance of KWebPage
      */
-    explicit KWebView(QWidget *parent = 0, bool createCustomPage = true);
+    explicit KWebView(QWidget *parent = nullptr, bool createCustomPage = true);
 
     /**
      * Destroys the KWebView.

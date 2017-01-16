@@ -102,7 +102,7 @@ public:
      * @param wid     the window ID of the window the web page will be
      *                embedded in
      */
-    explicit KWebWallet(QObject *parent = 0, WId wid = 0);
+    explicit KWebWallet(QObject *parent = nullptr, WId wid = 0);
 
     /**
      * Destructor

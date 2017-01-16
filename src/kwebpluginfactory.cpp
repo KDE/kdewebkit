@@ -47,7 +47,7 @@
 #define QL1C(x)  QLatin1Char(x)
 
 KWebPluginFactory::KWebPluginFactory(QObject *parent)
-    : QWebPluginFactory(parent), d(0)
+    : QWebPluginFactory(parent), d(nullptr)
 {
 }
 
@@ -68,7 +68,7 @@ QObject *KWebPluginFactory::create(const QString &_mimeType, const QUrl &url, co
     // Defer handling of flash content to QtWebKit's builtin viewer.
     // If you want to use/test KDE's nspluginviewer, comment out the
     // if statement below.
-    KParts::ReadOnlyPart *part = (excludedMimeType(mimeType) ? 0 : createPartInstanceFrom(mimeType, argumentNames, argumentValues, 0, parent()));
+    KParts::ReadOnlyPart *part = (excludedMimeType(mimeType) ? nullptr : createPartInstanceFrom(mimeType, argumentNames, argumentValues, nullptr, parent()));
 
     // qDebug() << "Asked for" << mimeType << "plugin, got" << part;
 
@@ -101,7 +101,7 @@ QObject *KWebPluginFactory::create(const QString &_mimeType, const QUrl &url, co
         return part->widget();
     }
 
-    return 0;
+    return nullptr;
 }
 
 QList<KWebPluginFactory::Plugin> KWebPluginFactory::plugins() const
@@ -135,7 +135,7 @@ KParts::ReadOnlyPart *KWebPluginFactory::createPartInstanceFrom(const QString &m
         QWidget *parentWidget,
         QObject *parentObj) const
 {
-    KParts::ReadOnlyPart *part = 0;
+    KParts::ReadOnlyPart *part = nullptr;
 
     if (!mimeType.isEmpty()) {
         // Only attempt to find a KPart for the supported mime types...
