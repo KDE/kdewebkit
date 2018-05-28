@@ -68,7 +68,7 @@ public:
     virtual QObject *create(const QString &mimeType,
                             const QUrl &url,
                             const QStringList &argumentNames,
-                            const QStringList &argumentValues) const Q_DECL_OVERRIDE;
+                            const QStringList &argumentValues) const override;
 
     /**
      * @reimp
@@ -78,7 +78,7 @@ public:
      * @see QWebPluginFactory::plugins
      * @internal
      */
-    QList<Plugin> plugins() const Q_DECL_OVERRIDE;
+    QList<Plugin> plugins() const override;
 
 protected:
     /**
