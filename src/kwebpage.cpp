@@ -180,7 +180,9 @@ public:
         KIO::FileCopyJob *cJob = qobject_cast<KIO::FileCopyJob *>(job);
         if (cJob && !cJob->error()) {
             // Same as KRun::foundMimeType but with a different URL
-            (void)KRun::runUrl(cJob->destUrl(), mimeType, window);
+            // TODO: check if KRun::RunExecutables is really wanted here
+            // old API call used default runExecutables=true flag
+            KRun::runUrl(cJob->destUrl(), mimeType, window, KRun::RunExecutables, QString(), QByteArray());
         }
     }
 
@@ -378,7 +380,7 @@ void KWebPage::downloadResponse(QNetworkReply *reply)
 
     // Ask KRun::runUrl to handle the response when mimetype is inode/*
     if (mimeType.startsWith(QL1S("inode/"), Qt::CaseInsensitive) &&
-            KRun::runUrl(replyUrl, mimeType, d->windowWidget(), false, false,
+            KRun::runUrl(replyUrl, mimeType, d->windowWidget(), KRun::RunFlags(),
                          metaData.value(QL1S("content-disposition-filename")))) {
         return;
     }
@@ -572,7 +574,7 @@ bool KWebPage::handleReply(QNetworkReply *reply, QString *contentType, KIO::Meta
                         bool success = false;
                         // qDebug() << "Suggested file name:" << suggestedFileName;
                         if (offer) {
-                            success = KRun::run(*offer, list, d->windowWidget(), false, suggestedFileName);
+                            success = KRun::runService(*offer, list, d->windowWidget(), false, suggestedFileName);
                         } else {
                             success = KRun::displayOpenWithDialog(list, d->windowWidget(), false, suggestedFileName);
                             if (!success) {
