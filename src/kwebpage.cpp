@@ -49,13 +49,13 @@
 #include <kparts/browseropenorsavequestion.h>
 
 // Qt
-#include <QtCore/QPointer>
-#include <QtCore/QFileInfo>
-#include <QtCore/QCoreApplication>
+#include <QPointer>
+#include <QFileInfo>
+#include <QCoreApplication>
 #include <QAction>
 #include <QFileDialog>
 #include <QWebFrame>
-#include <QtNetwork/QNetworkReply>
+#include <QNetworkReply>
 #include <qtemporaryfile.h>
 
 #define QL1S(x)  QLatin1String(x)

@@ -27,7 +27,7 @@
 #ifndef KWEBVIEW_P_H
 #define KWEBVIEW_P_H
 
-#include <QtCore/QEvent>
+#include <QEvent>
 #include <QClipboard>
 #include <QApplication>
 #include <QWebFrame>

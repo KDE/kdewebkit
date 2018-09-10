@@ -34,9 +34,9 @@
 #include <kparts/readonlypart.h>
 #include <kparts/openurlarguments.h>
 
-#include <QtCore/QListIterator>
-#include <QtCore/QStringList>
-#include <QtCore/QList>
+#include <QListIterator>
+#include <QStringList>
+#include <QList>
 #include <qmimedatabase.h>
 
 #include <QWebPluginFactory>
