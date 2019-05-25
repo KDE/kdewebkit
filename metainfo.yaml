@@ -17,4 +17,4 @@ cmakename: KF5WebKit
 
 public_lib: true
 group: Frameworks
-subgroup: Tier 3
+subgroup: Porting Aids
