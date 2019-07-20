@@ -38,6 +38,9 @@ install(FILES
   DESTINATION ${KDE_INSTALL_INCLUDEDIR_KF5}/KDEWebKit COMPONENT Devel
 )
 
+if(BUILD_DESIGNERPLUGIN)
+    add_subdirectory(designer)
+endif()
 
 include(ECMGeneratePriFile)
 ecm_generate_pri_file(BASE_NAME KDEWebKit LIB_NAME KF5WebKit DEPS "webkitwidgets" FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR ${KDE_INSTALL_INCLUDEDIR_KF5}/KDEWebKit)
