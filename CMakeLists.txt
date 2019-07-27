@@ -10,7 +10,7 @@ set_package_properties(ECM PROPERTIES TYPE REQUIRED DESCRIPTION "Extra CMake Mod
 feature_summary(WHAT REQUIRED_PACKAGES_NOT_FOUND FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
 
-set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
 
 option(BUILD_DESIGNERPLUGIN "Build plugin for Qt Designer" ON)
 add_feature_info(DESIGNERPLUGIN ${BUILD_DESIGNERPLUGIN} "Build plugin for Qt Designer")
@@ -27,6 +27,9 @@ include(GenerateExportHeader)
 include(ECMSetupVersion)
 include(ECMGenerateHeaders)
 
+# replace with ECMAddQtDesignerPlugin. once available
+include(KDEWebKitInternalMacros)
+
 ecm_setup_version(PROJECT VARIABLE_PREFIX KDEWEBKIT
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kdewebkit_version.h"
                         PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KF5WebKitConfigVersion.cmake"
@@ -39,9 +42,6 @@ find_package(KF5JobWidgets ${KF5_DEP_VERSION} REQUIRED)
 find_package(KF5Parts ${KF5_DEP_VERSION} REQUIRED)
 find_package(KF5Service ${KF5_DEP_VERSION} REQUIRED)
 find_package(KF5Wallet ${KF5_DEP_VERSION} REQUIRED)
-if(BUILD_DESIGNERPLUGIN)
-    find_package(KF5DesignerPlugin ${KF5_DEP_VERSION} REQUIRED)
-endif()
 
 remove_definitions(-DQT_NO_CAST_FROM_ASCII)
 remove_definitions(-DQT_NO_CAST_FROM_BYTEARRAY)

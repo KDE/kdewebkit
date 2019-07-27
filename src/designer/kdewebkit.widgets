@@ -1,8 +1,0 @@
-[Global]
-PluginName=KDEWebKitWidgets
-
-[KWebView]
-IncludeFile=kwebview.h
-ToolTip=KDE WebKit View
-WhatsThis=A WebKit view with KDE integration.
-Group=Views (KDE - Deprecated)
