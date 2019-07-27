@@ -1,10 +1,12 @@
-kdewebkit_qtdesignerplugin_widget(KWebView
+include(ECMAddQtDesignerPlugin)
+
+ecm_qtdesignerplugin_widget(KWebView
     TOOLTIP "KDE WebKit View"
     WHATSTHIS "A WebKit view with KDE integration."
     GROUP "Views (KF5 - Deprecated)"
 )
 
-kdewebkit_add_qtdesignerplugin(kdewebkitwidgets
+ecm_add_qtdesignerplugin(kdewebkitwidgets
     NAME KDEWebKitWidgets
     OUTPUT_NAME kdewebkit5widgets
     WIDGETS

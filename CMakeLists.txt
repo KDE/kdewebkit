@@ -10,7 +10,7 @@ set_package_properties(ECM PROPERTIES TYPE REQUIRED DESCRIPTION "Extra CMake Mod
 feature_summary(WHAT REQUIRED_PACKAGES_NOT_FOUND FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
 
-set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 
 option(BUILD_DESIGNERPLUGIN "Build plugin for Qt Designer" ON)
 add_feature_info(DESIGNERPLUGIN ${BUILD_DESIGNERPLUGIN} "Build plugin for Qt Designer")
@@ -26,9 +26,6 @@ include(GenerateExportHeader)
 
 include(ECMSetupVersion)
 include(ECMGenerateHeaders)
-
-# replace with ECMAddQtDesignerPlugin. once available
-include(KDEWebKitInternalMacros)
 
 ecm_setup_version(PROJECT VARIABLE_PREFIX KDEWEBKIT
                         VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kdewebkit_version.h"
