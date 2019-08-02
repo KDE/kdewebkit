@@ -1,5 +1,3 @@
-include(ECMAddQtDesignerPlugin)
-
 kdewebkit_qtdesignerplugin_widget(KWebView
     TOOLTIP "KDE WebKit View"
     WHATSTHIS "A WebKit view with KDE integration."
