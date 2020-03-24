@@ -43,6 +43,11 @@ find_package(KF5Wallet ${KF5_DEP_VERSION} REQUIRED)
 remove_definitions(-DQT_NO_CAST_FROM_ASCII)
 remove_definitions(-DQT_NO_CAST_FROM_BYTEARRAY)
 add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050d00)
+<<<<<<< Updated upstream
+=======
+add_definitions(-DQT_DEPRECATED_WARNINGS_SINCE=0x060000)
+add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x053f00)
+>>>>>>> Stashed changes
 
 add_subdirectory(src)
 
