@@ -15,7 +15,7 @@ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 option(BUILD_DESIGNERPLUGIN "Build plugin for Qt Designer" ON)
 add_feature_info(DESIGNERPLUGIN ${BUILD_DESIGNERPLUGIN} "Build plugin for Qt Designer")
 
-set(REQUIRED_QT_VERSION 5.12.0)
+set(REQUIRED_QT_VERSION 5.13.0)
 find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Core Widgets WebKitWidgets Network)
 include(KDEInstallDirs)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
