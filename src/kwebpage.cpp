@@ -44,6 +44,8 @@
 #include <kio/job.h>
 #include <kio/copyjob.h>
 #include <kio/jobuidelegate.h>
+#include <KIO/CommandLauncherJob>
+#include <KIO/OpenUrlJob>
 #include <kio/renamedialog.h>
 #include <kio/scheduler.h>
 #include <kparts/browseropenorsavequestion.h>
@@ -180,9 +182,9 @@ public:
         KIO::FileCopyJob *cJob = qobject_cast<KIO::FileCopyJob *>(job);
         if (cJob && !cJob->error()) {
             // Same as KRun::foundMimeType but with a different URL
-            // TODO: check if KRun::RunExecutables is really wanted here
-            // old API call used default runExecutables=true flag
-            KRun::runUrl(cJob->destUrl(), mimeType, window, KRun::RunExecutables, QString(), QByteArray());
+            auto *job = new KIO::OpenUrlJob(cJob->destUrl(), mimeType);
+            job->setUiDelegate(new KIO::JobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, window));
+            job->start();
         }
     }
 
@@ -370,18 +372,13 @@ void KWebPage::downloadResponse(QNetworkReply *reply)
         return;
     }
 
-    const QUrl replyUrl(reply->url());
-
-    // Ask KRun to handle the response when mimetype is unknown
-    if (mimeType.isEmpty()) {
-        (void)new KRun(replyUrl, d->windowWidget());
-        return;
-    }
-
-    // Ask KRun::runUrl to handle the response when mimetype is inode/*
-    if (mimeType.startsWith(QL1S("inode/"), Qt::CaseInsensitive) &&
-            KRun::runUrl(replyUrl, mimeType, d->windowWidget(), KRun::RunFlags(),
-                         metaData.value(QL1S("content-disposition-filename")))) {
+    // Ask OpenUrlJob to handle the response when mimetype is unknown
+    // or when mimetype is inode/*
+    if (mimeType.isEmpty() || mimeType.startsWith(QL1S("inode/"), Qt::CaseInsensitive)) {
+        auto *job = new KIO::OpenUrlJob(reply->url(), mimeType);
+        job->setSuggestedFileName(metaData.value(QL1S("content-disposition-filename")));
+        job->setUiDelegate(new KIO::JobUiDelegate(KJobUiDelegate::AutoHandlingEnabled, d->windowWidget()));
+        job->start();
         return;
     }
 }
