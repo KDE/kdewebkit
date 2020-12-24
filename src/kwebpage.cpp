@@ -338,8 +338,8 @@ void KWebPage::setWallet(KWebWallet *wallet)
 void KWebPage::downloadRequest(const QNetworkRequest &request)
 {
     KIO::TransferJob *job = KIO::get(request.url());
-    connect(job, SIGNAL(mimetype(KIO::Job*,QString)),
-            this, SLOT(_k_receivedContentType(KIO::Job*,QString)));
+    connect(job, &KIO::TransferJob::mimeTypeFound,
+            this, [this](KIO::Job *job, const QString &mimeType) { d->_k_receivedContentType(job, mimeType); });
 
     job->setMetaData(request.attribute(static_cast<QNetworkRequest::Attribute>(KIO::AccessManager::MetaData)).toMap());
     job->addMetaData(QL1S("MaxCacheSize"), QL1S("0")); // Don't store in http cache.

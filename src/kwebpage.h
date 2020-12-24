@@ -358,7 +358,6 @@ private:
     class KWebPagePrivate;
     KWebPagePrivate *const d;
     Q_PRIVATE_SLOT(d, void _k_copyResultToTempFile(KJob *))
-    Q_PRIVATE_SLOT(d, void _k_receivedContentType(KIO::Job *, const QString &))
     Q_PRIVATE_SLOT(d, void _k_contentTypeCheckFailed(KJob *))
 };
 
