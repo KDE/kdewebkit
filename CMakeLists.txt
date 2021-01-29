@@ -40,6 +40,7 @@ find_package(KF5Parts ${KF_DEP_VERSION} REQUIRED)
 find_package(KF5Service ${KF_DEP_VERSION} REQUIRED)
 find_package(KF5Wallet ${KF_DEP_VERSION} REQUIRED)
 
+remove_definitions(-DQT_NO_FOREACH)
 remove_definitions(-DQT_NO_CAST_FROM_ASCII)
 remove_definitions(-DQT_NO_CAST_FROM_BYTEARRAY)
 add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050e00)
