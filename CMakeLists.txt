@@ -40,9 +40,13 @@ find_package(KF5Parts ${KF_DEP_VERSION} REQUIRED)
 find_package(KF5Service ${KF_DEP_VERSION} REQUIRED)
 find_package(KF5Wallet ${KF_DEP_VERSION} REQUIRED)
 
+# remove definitions set by KDEFrameworkCompilerSettings which we fail to meet
+remove_definitions(-DQT_NO_KEYWORDS)
 remove_definitions(-DQT_NO_FOREACH)
 remove_definitions(-DQT_NO_CAST_FROM_ASCII)
 remove_definitions(-DQT_NO_CAST_FROM_BYTEARRAY)
+# ideally we would support QT_NO_KEYWORDS, but at least we can do this
+add_definitions(-DQT_NO_SIGNALS_SLOTS_KEYWORDS)
 add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050e00)
 
 add_subdirectory(src)
