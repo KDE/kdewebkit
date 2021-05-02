@@ -15,7 +15,7 @@ target_include_directories(KF5WebKit INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTAL
 target_link_libraries(KF5WebKit PUBLIC Qt5::WebKitWidgets
                                 PRIVATE KF5::CoreAddons KF5::Wallet KF5::KIOWidgets KF5::Parts)
 
-set_target_properties(KF5WebKit PROPERTIES VERSION   ${KDEWEBKIT_VERSION_STRING}
+set_target_properties(KF5WebKit PROPERTIES VERSION   ${KDEWEBKIT_VERSION}
                                            SOVERSION ${KDEWEBKIT_SOVERSION}
                                            EXPORT_NAME WebKit
 )
