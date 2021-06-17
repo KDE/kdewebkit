@@ -1,4 +1,13 @@
-set(KDEWebKit_LIB_SRCS
+add_library(KF5WebKit)
+add_library(KF5::WebKit ALIAS KF5WebKit)
+
+set_target_properties(KF5WebKit PROPERTIES
+    VERSION     ${KDEWEBKIT_VERSION}
+    SOVERSION   ${KDEWEBKIT_SOVERSION}
+    EXPORT_NAME WebKit
+)
+
+target_sources(KF5WebKit PRIVATE
     kwebwallet.cpp
     kgraphicswebview.cpp
     kwebpage.cpp
@@ -6,19 +15,12 @@ set(KDEWebKit_LIB_SRCS
     kwebpluginfactory.cpp
 )
 
-add_library(KF5WebKit ${KDEWebKit_LIB_SRCS})
 generate_export_header(KF5WebKit BASE_NAME KDEWebKit)
-add_library(KF5::WebKit ALIAS KF5WebKit)
 
 target_include_directories(KF5WebKit INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR_KF5}/KDEWebKit>")
 
 target_link_libraries(KF5WebKit PUBLIC Qt5::WebKitWidgets
                                 PRIVATE KF5::CoreAddons KF5::Wallet KF5::KIOWidgets KF5::Parts)
-
-set_target_properties(KF5WebKit PROPERTIES VERSION   ${KDEWEBKIT_VERSION}
-                                           SOVERSION ${KDEWEBKIT_SOVERSION}
-                                           EXPORT_NAME WebKit
-)
 
 ecm_generate_headers(KDEWebKit_HEADERS
   HEADER_NAMES
