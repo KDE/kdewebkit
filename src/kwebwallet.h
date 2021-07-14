@@ -111,7 +111,7 @@ public:
 
     /**
      * Returns a list of forms in @p frame that have cached data in the
-     * peristent storage.
+     * persistent storage.
      *
      * If @p recursive is set to true, the default, then this function will
      * will also return the cached form data for all the children frames of

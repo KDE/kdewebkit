@@ -93,7 +93,7 @@ public:
          */
         KIOIntegration = 0x02,
         /**
-         * Use KPart componenets, if available, to display content in
+         * Use KPart components, if available, to display content in
          * &lt;embed&gt; and &lt;object&gt; tags.
          */
         KPartsIntegration = 0x04,

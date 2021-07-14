@@ -43,7 +43,7 @@ template<class T> class KWebViewPrivate;
  * from the selection clipboard.
  *
  * The specific functionality provided by this class (over and above what
- * would be acheived by using KWebPage with a QWebView) is that scrolling
+ * would be achieved by using KWebPage with a QWebView) is that scrolling
  * with the mouse wheel while holding down CTRL zooms the page (see
  * QWebView::setZoomFactor) and several useful signals are emitted when
  * the user performs certain actions.
