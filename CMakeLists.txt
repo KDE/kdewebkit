@@ -15,7 +15,7 @@ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
 option(BUILD_DESIGNERPLUGIN "Build plugin for Qt Designer" ON)
 add_feature_info(DESIGNERPLUGIN ${BUILD_DESIGNERPLUGIN} "Build plugin for Qt Designer")
 
-set(REQUIRED_QT_VERSION 5.15.0)
+set(REQUIRED_QT_VERSION 5.15.2)
 find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Core Widgets WebKitWidgets Network)
 include(KDEInstallDirs)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
@@ -47,7 +47,7 @@ remove_definitions(-DQT_NO_CAST_FROM_ASCII)
 remove_definitions(-DQT_NO_CAST_FROM_BYTEARRAY)
 # ideally we would support QT_NO_KEYWORDS, but at least we can do this
 add_definitions(-DQT_NO_SIGNALS_SLOTS_KEYWORDS)
-add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050e00) # QWheelEvent::delta
+add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f02) # QWheelEvent::delta
 
 add_subdirectory(src)
 
