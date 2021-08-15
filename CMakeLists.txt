@@ -47,7 +47,7 @@ remove_definitions(-DQT_NO_CAST_FROM_ASCII)
 remove_definitions(-DQT_NO_CAST_FROM_BYTEARRAY)
 # ideally we would support QT_NO_KEYWORDS, but at least we can do this
 add_definitions(-DQT_NO_SIGNALS_SLOTS_KEYWORDS)
-add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050f02) # QWheelEvent::delta
+add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050e00) # QWheelEvent::delta
 
 add_subdirectory(src)
 
