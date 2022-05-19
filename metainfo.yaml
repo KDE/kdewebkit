@@ -8,7 +8,7 @@ platforms:
     - name: Windows
     - name: macOS
 portingAid: true
-deprecated: false
+deprecated: true
 release: true
 libraries:
  - qmake: KDEWebKit
